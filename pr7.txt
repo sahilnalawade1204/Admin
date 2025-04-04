@@ -1,0 +1,23 @@
+Steps:
+1.	Install Image Processing and Signal Processing packages and restart scilab.
+2.	Run this command on console: atomsRemove('scicv')
+3.	Restart scilab
+//Thresholding Operation
+clc;
+a = imread("C:\Users\Admin\Downloads\vande.jpg");
+a = rgb2gray(a);
+b = double(a);
+t = input('Enter threshold parameter: ');
+c = (b >= t) * 255;
+imshow(c);
+
+//Gray Level Scaling without background
+clc;
+a=imread("C:\Users\Admin\Downloads\vande.jpg");
+a=rgb2gray(a);
+b=double(a);
+L=max(b(:));
+x=round(L/2);
+y=L;
+c=(b>=x & b<=y)*L;
+imshow(c);
