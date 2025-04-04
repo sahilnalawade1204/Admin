@@ -1,0 +1,26 @@
+clear;  
+clc;  
+
+X = [4, 3, 5, 6; 4, 2, 7, 7; 5, 5, 6, 7];  
+[m, n] = size(X);  
+
+// Compute mean and covariance matrix
+mx = mean(X, 2);  // Mean of X (mean along rows)
+C = cov(X');      // Covariance matrix of X
+
+// Eigen decomposition
+[V, D] = spec(C);  
+[d, i] = gsort(diag(D));  // Sort eigenvalues and eigenvectors
+
+// Arrange eigenvectors based on sorted eigenvalues
+T = V(:, i)';  
+
+// KL transformation
+Y = T * X;  // Transformed matrix
+x = T' * Y;  // Reconstructed matrix
+
+// Display results
+disp("Eigen Values: "), disp(d);  
+disp("Eigenvector Matrix T: "), disp(T);  
+disp("KL Transformation of X: "), disp(Y);  
+disp("Reconstructed X: "), disp(x);
