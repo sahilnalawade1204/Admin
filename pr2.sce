@@ -1,3 +1,4 @@
+//Circular Convolution expressed as Linear Convolution plus alias
 x =[1,2;3,4];
 h=[5,6;7,8];
 y=conv2(x,h);
