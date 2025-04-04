@@ -1,0 +1,39 @@
+//2D Linear Cross Correlation
+clc;
+x = [3,1;2,4];
+h1 = [1,5;2,3];
+h2 = h1(:,$:-1:1);
+h = h2($:-1:1,:);
+y = conv2(x,h)
+disp(y, 'Linear cross Correlation result y=')
+
+//2D Circular Correlation
+clc;
+x = [1,5;2,4];
+h = [3,2;4,1];
+h = h(:,$:-1:1);
+h = h($:-1:1,:);
+X = fft2(x);
+H = fft2(h);
+Y = X.*H;
+y = ifft(Y);
+disp(y,'Circular Correlation result y=')
+
+//2D Linear Autocorrelation
+clc;
+x1 = [1,1;1,1];
+x2 = x1(:,$:-1:1);
+x2 = x2($:-1:1,:);
+x = conv2(x1,x2)
+disp(x,'Linear auto Correlation result x=')
+
+//2D Circular Autocorrelation
+clc;
+x = [1,5;2,4];
+h = x(:,$:-1:1);
+h = h($:-1:1,:);
+X = fft2(x);
+H = fft2(h);
+Y = X.*H;
+y = ifft(Y);
+disp(y,'Circular Correlation result y=')
